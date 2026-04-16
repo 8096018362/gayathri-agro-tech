@@ -1,0 +1,253 @@
+<div class="form-container">
+    <h2 mat-dialog-title>Angular material dialog prompt</h2>
+    <mat-dialog-content>
+        <div class="main-content">
+            <div class="container-fluid">
+                <form [formGroup]="form" class="container">
+
+                    <div class="section green">
+
+                        <mat-form-field>
+                            <mat-label>S No</mat-label>
+                            <input matInput formControlName="sNo">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Farmer Name</mat-label>
+                            <input matInput formControlName="farmerName">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Aadhar No</mat-label>
+                            <input matInput formControlName="aadharNo">
+                        </mat-form-field>
+
+
+                        <mat-form-field>
+                            <mat-label>Date</mat-label>
+                            <input matInput [matDatepicker]="d1" formControlName="date">
+                            <mat-datepicker-toggle matSuffix [for]="d1"></mat-datepicker-toggle>
+                            <mat-datepicker #d1></mat-datepicker>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>RST No</mat-label>
+                            <input matInput formControlName="rstNo">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Vehicle No</mat-label>
+                            <input matInput formControlName="vehicleNo">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Paddy</mat-label>
+                            <input matInput formControlName="paddy">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Due Date</mat-label>
+                            <input matInput [matDatepicker]="d2" formControlName="dueDate">
+                            <mat-datepicker-toggle matSuffix [for]="d2"></mat-datepicker-toggle>
+                            <mat-datepicker #d2></mat-datepicker>
+                        </mat-form-field>
+
+                        <!-- Net Weight -->
+                        <mat-form-field>
+                            <mat-label>Net Weight</mat-label>
+                            <input matInput type="number" formControlName="netWt" min="0" step="0.01"
+                                (focus)="onFocus('netWt', $event)" (blur)="onBlur('netWt')"
+                                (input)="preventNegative('netWt')">
+                        </mat-form-field>
+
+                        <!-- Moisture -->
+                        <mat-form-field>
+                            <mat-label>Moisture</mat-label>
+                            <input matInput type="number" formControlName="moisture" min="0" step="0.01"
+                                (focus)="onFocus('moisture', $event)" (blur)="onBlur('moisture')"
+                                (input)="preventNegative('moisture')">
+                        </mat-form-field>
+
+
+                        <!-- Bags -->
+                        <mat-form-field>
+                            <mat-label>Bags</mat-label>
+                            <input matInput formControlName="bags" (focus)="onFocus('bags', $event)"
+                                (blur)="onBlur('bags')" (input)="preventNegative('bags')">
+                        </mat-form-field>
+
+                        <!-- Total Weight -->
+                        <mat-form-field>
+                            <mat-label>Total Weight</mat-label>
+                            <input matInput formControlName="totalWt" readonly>
+                        </mat-form-field>
+
+                        <!-- Rate -->
+                        <mat-form-field>
+                            <mat-label>Rate</mat-label>
+                            <input matInput type="number" formControlName="rate" min="0" step="0.01"
+                                (focus)="onFocus('rate', $event)" (blur)="onBlur('rate')"
+                                (input)="preventNegative('rate')">
+                        </mat-form-field>
+
+                        <!-- Amount -->
+                        <mat-form-field>
+                            <mat-label>Amount</mat-label>
+                            <input matInput formControlName="amount" readonly>
+                        </mat-form-field>
+
+                        <!-- Advance -->
+                        <mat-form-field>
+                            <mat-label>Advance</mat-label>
+                            <input matInput type="number" formControlName="advance" min="0" step="0.01"
+                                (focus)="onFocus('advance', $event)" (blur)="onBlur('advance')"
+                                (input)="preventNegative('advance')">
+                        </mat-form-field>
+
+                        <!-- Balance -->
+                        <mat-form-field>
+                            <mat-label>Balance</mat-label>
+                            <input matInput formControlName="balance" readonly>
+                        </mat-form-field>
+
+                        <!-- Unloading -->
+                        <mat-form-field>
+                            <mat-label>Unloading</mat-label>
+                            <input matInput type="number" formControlName="unloading" min="0" step="0.01"
+                                (focus)="onFocus('unloading', $event)" (blur)="onBlur('unloading')"
+                                (input)="preventNegative('unloading')">
+                        </mat-form-field>
+
+                        <!-- Weighment -->
+                        <mat-form-field>
+                            <mat-label>Weighment</mat-label>
+                            <input matInput type="number" formControlName="weighment" min="0" step="0.01"
+                                (focus)="onFocus('weighment', $event)" (blur)="onBlur('weighment')"
+                                (input)="preventNegative('weighment')">
+                        </mat-form-field>
+
+                        <!-- Total Deductions -->
+                        <mat-form-field>
+                            <mat-label>Total Deductions</mat-label>
+                            <input matInput formControlName="totalDeductions" readonly>
+                        </mat-form-field>
+
+                        <!-- Total Amount -->
+                        <mat-form-field>
+                            <mat-label>Total Amount</mat-label>
+                            <input matInput formControlName="totalAmount" readonly>
+                        </mat-form-field>
+
+                    </div>
+
+                    <button mat-raised-button color="primary" (click)="receiptPreview()" class="btn-pos">
+                        Preview Receipt
+                    </button>
+
+
+
+                </form>
+
+                <!-- RECEIPT -->
+                <div class="receipt-container" id="receipt-container" *ngIf="showReceipt">
+
+                    <div class=" header">
+                        <p>Purchase Voucher</p>
+                        <div style="text-align: right;">GSTIN/UIN: 36ANPPR5458P3ZS</div>
+                        <h2>Sri Gayathri Agro Tech</h2>
+                        <p>22-34/3, Sy No 108/APAGIDIMARI ROAD UTKOOR,
+                            NARAYANPET-(DIST),Telangana,509311
+                            Ph No.9491489760
+                        </p>
+
+                    </div>
+
+                    <div class="info-grid">
+                        <div><b>S No:</b> {{receipt.sNo}}</div>
+                        <div><b>RST No:</b> {{receipt.rstNo}}</div>
+                        <div><b>Farmer:</b> {{receipt.farmerName | titlecase }}</div>
+                        <div><b>Aadhar No:</b> {{receipt.aadharNo}}</div>
+                        <div><b>Date:</b> {{receipt.date | date:'dd/MM/yyyy'}}</div>
+                        <div><b>Vehicle No:</b> {{receipt.vehicleNo}}</div>
+                    </div>
+
+                    <hr>
+
+                    <table class="details-table">
+                        <thead>
+                            <tr>
+                                <th>Paddy</th>
+                                <th>Net Wt</th>
+                                <th>Moisture</th>
+                                <th>Bags</th>
+                                <th>Total Wt</th>
+                                <th>Rate</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{receipt.paddy}}</td>
+                                <td>{{receipt.netWt}}</td>
+                                <td>{{receipt.moisture}}</td>
+                                <td>{{receipt.bags}}</td>
+                                <td>{{receipt.totalWt}}</td>
+                                <td>{{receipt.rate}}</td>
+                                <td>{{receipt.amount| currency:'INR':'symbol'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <div class="deductions">
+                        <h4>Deductions</h4>
+
+                        <table class="details-table">
+                            <thead>
+                                <tr>
+                                    <th>Unloading</th>
+                                    <th>Weighment</th>
+                                    <th>Total Deductions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{receipt.unloading}}</td>
+                                    <td>{{receipt.weighment}}</td>
+                                    <td>{{receipt.totalDeductions| currency:'INR':'symbol'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="total-section">
+                        <div><strong>Total Amount:</strong> {{receipt.totalAmount| currency:'INR':'symbol'}}</div>
+                        <div><strong>Advance:</strong> {{receipt.advance| currency:'INR':'symbol'}}</div>
+                        <div class="final"><strong>Balance Paid:</strong> {{receipt.balance| currency:'INR':'symbol'}}
+                        </div>
+                    </div>
+
+                    <div class="footer">
+                        <p>Signature of Supplier</p>
+                        <p>Thank You</p>
+                    </div>
+
+                </div>
+                <button (click)="downloadPDF()" class="btn-pos cus-gap" mat-raised-button color="accent"
+                    *ngIf="showReceipt">
+                    Download PDF
+                </button>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button color="primary">
+            Close
+        </button>
+        <button mat-raised-button color="primary">
+            Submit
+        </button>
+    </mat-dialog-actions>
+</div>

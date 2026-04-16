@@ -1,0 +1,102 @@
+<div class="form-container">
+    <!-- <mat-dialog-content> -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <!-- RECEIPT -->
+            <div class="receipt-container" id="receipt-container">
+
+                <div class=" header">
+                    <p>Purchase Voucher</p>
+                    <div style="text-align: right;">GSTIN/UIN: 36ANPPR5458P3ZS</div>
+                    <h2>Sri Gayathri Agro Tech</h2>
+                    <p>22-34/3, Sy No 108/APAGIDIMARI ROAD UTKOOR,
+                        NARAYANPET(DIST),Telangana 509311<br />
+                        Ph No.9491489760
+                    </p>
+
+                </div>
+
+                <div class="info-grid">
+                    <div><b>S No:</b> {{receipt.sNo}}</div>
+                    <div><b>RST No:</b> {{receipt.rstNo}}</div>
+                    <div><b>Farmer:</b> {{receipt.farmerName | titlecase }}</div>
+                    <div><b>Aadhar No:</b> {{receipt.aadharNo}}</div>
+                    <div><b>Date:</b> {{receipt.date | date:'dd/MM/yyyy'}}</div>
+                    <div><b>Vehicle No:</b> {{receipt.vehicleNo}}</div>
+                </div>
+
+                <hr>
+
+                <table class="details-table">
+                    <thead>
+                        <tr>
+                            <th>Paddy</th>
+                            <th>Net Wt</th>
+                            <th>Moisture</th>
+                            <th>Bags</th>
+                            <th>Total Wt</th>
+                            <th>Rate</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{receipt.paddy}}</td>
+                            <td>{{receipt.netWt}}</td>
+                            <td>{{receipt.moisture}}</td>
+                            <td>{{receipt.bags}}</td>
+                            <td>{{receipt.totalWt}}</td>
+                            <td>{{receipt.rate}}</td>
+                            <td>{{receipt.amount| currency:'INR':'symbol'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- <hr> -->
+
+                <div class="deductions">
+                    <h4>Deductions</h4>
+
+                    <table class="details-table">
+                        <thead>
+                            <tr>
+                                <th>Unloading</th>
+                                <th>Weighment</th>
+                                <th>Total Deductions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{receipt.unloading}}</td>
+                                <td>{{receipt.weighment}}</td>
+                                <td>{{receipt.totalDeductions| currency:'INR':'symbol'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="total-section">
+                    <div><strong>Total Amount:</strong> {{receipt.totalAmount| currency:'INR':'symbol'}}</div>
+                    <div><strong>Advance:</strong> {{receipt.advance| currency:'INR':'symbol'}}</div>
+                    <div class="final"><strong>Balance Paid:</strong> {{receipt.balance| currency:'INR':'symbol'}}
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <p>Signature of Supplier</p>
+                    <p>Thank You</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </mat-dialog-content> -->
+    <mat-dialog-actions [align]="'center'">
+        <button mat-raised-button color="primary" (click)="closeDialog()">
+            Close
+        </button>
+        <button mat-raised-button color="primary" (click)="downloadPDF()">
+            Download
+        </button>
+    </mat-dialog-actions>
+</div>

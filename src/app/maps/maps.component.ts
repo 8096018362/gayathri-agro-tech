@@ -20,12 +20,12 @@ export class MapsComponent implements OnInit {
 
     ngOnInit() {
         this.form = this.fb.group({
-            farmerName: ['', Validators.required],
+            farmerName: [''],
             sNo: [''],
             date: [''],
             rstNo: [''],
-            vehicleNo: ['', Validators.required],
-            aadharNo: ['', Validators.required],
+            vehicleNo: [''],
+            aadharNo: [''],
 
             paddy: [''],
             dueDate: [''],
@@ -47,9 +47,9 @@ export class MapsComponent implements OnInit {
             totalAmount: [{ value: 0, disabled: true }],
 
 
-            bankAccountHolderName: ['', Validators.required],
-            bankAccountNumber: ['', Validators.required],
-            bankIFSCCode: ['', Validators.required],
+            bankAccountHolderName: [''],
+            bankAccountNumber: [''],
+            bankIFSCCode: [''],
         });
 
         this.form.valueChanges.subscribe(() => {

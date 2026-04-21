@@ -15,7 +15,7 @@ import { printPOComponentDialog } from './print/print';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements AfterViewInit {
-  displayedColumns: string[] = ['sNo', 'farmerName', 'paddy', 'totalWt', 'rate', 'balance', 'dueDate', 'actions'];
+  displayedColumns: string[] = ['sNo', 'farmerName', 'paddy', 'totalWt', 'rate', 'balance', 'dueDate', 'bankAccountNumber', 'actions'];
 
   dataSource: MatTableDataSource<any>;
 
@@ -24,7 +24,8 @@ export class DashboardComponent implements AfterViewInit {
 
   constructor(private dialog: MatDialog, private router: Router, private dataService: DashboardService) {
     this.dataService.data$.subscribe(data => {
-      this.dummyData = data;
+      //  this.dummyData = data;
+      this.dummyData = [];
     });
     this.dataSource = new MatTableDataSource(this.dummyData);
   }

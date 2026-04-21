@@ -20,12 +20,12 @@ export class MapsComponent implements OnInit {
 
     ngOnInit() {
         this.form = this.fb.group({
-            farmerName: ['', Validators.required],
+            farmerName: ['ramu', Validators.required],
             sNo: [''],
             date: [''],
             rstNo: [''],
-            vehicleNo: ['', Validators.required],
-            aadharNo: ['', Validators.required],
+            vehicleNo: ['ap22z1234', Validators.required],
+            aadharNo: ['30989090', Validators.required],
 
             paddy: [''],
             dueDate: [''],
@@ -44,7 +44,12 @@ export class MapsComponent implements OnInit {
             unloading: [0],
             weighment: [0],
             totalDeductions: [{ value: 0, disabled: true }],
-            totalAmount: [{ value: 0, disabled: true }]
+            totalAmount: [{ value: 0, disabled: true }],
+
+
+            bankAccountHolderName: ['ramu goapl', Validators.required],
+            bankAccountNumber: ['123431245', Validators.required],
+            bankIFSCCode: ['SBIN0001234', Validators.required],
         });
 
         this.form.valueChanges.subscribe(() => {
@@ -179,22 +184,62 @@ export class MapsComponent implements OnInit {
         if (!data) return;
 
         html2canvas(data, { scale: 2 }).then(canvas => {
-            const imgWidth = 208; // A4 width
-            const pageHeight = 295;
-            const imgHeight = canvas.height * imgWidth / canvas.width;
+            // const imgWidth = 210; // A4 width
+            // const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+            // const contentDataURL = canvas.toDataURL('image/png');
+
+            // const pdf = new jsPDF('p', 'mm', 'a4');
+            // let position = 0;
+
+            // pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight / 1.5);
+
+            // let fileName = '';
+            // const date = new Date(this.receipt?.date);
+            // const dateString = date.toISOString().split('T')[0];
+            // fileName = `${this.receipt?.farmerName}_${dateString}_receipt.pdf`;
+            // pdf.save(fileName);
+
+
+
+            const pageWidth = 210;
+            const pageHeight = 297;
+            const halfHeight = pageHeight / 2;
 
             const contentDataURL = canvas.toDataURL('image/png');
 
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            let position = 0;
+            // calculate proportional width based on half height
+            const imgWidth = (canvas.width * halfHeight) / canvas.height;
+            const imgHeight = halfHeight;
 
-            pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-            let fileName = `${this.receipt?.farmerName}_receipt.pdf`;
+            // center horizontally
+            const x = (pageWidth - imgWidth) / 2;
+
+            const pdf = new jsPDF('p', 'mm', 'a4');
+
+            pdf.addImage(
+                contentDataURL,
+                'PNG',
+                x,
+                0,
+                imgWidth,
+                imgHeight
+            );
+
+            // File name
+            const date = new Date(this.receipt?.date);
+            const dateString = date.toISOString().split('T')[0];
+            const fileName = `${this.receipt?.farmerName}_${dateString}_receipt.pdf`;
+
             pdf.save(fileName);
+
+
+
+
         });
 
-        setTimeout(() => {
-            this.showReceipt = false;
-        }, 5000);
+        // setTimeout(() => {
+        //     this.showReceipt = false;
+        // }, 5000);
     }
 }

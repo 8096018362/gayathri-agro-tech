@@ -50,6 +50,14 @@
                         <mat-datepicker #d2></mat-datepicker>
                     </mat-form-field>
 
+
+                    <!-- Bags -->
+                    <mat-form-field>
+                        <mat-label>Bags</mat-label>
+                        <input matInput formControlName="bags" (focus)="onFocus('bags', $event)" (blur)="onBlur('bags')"
+                            (input)="preventNegative('bags')">
+                    </mat-form-field>
+
                     <!-- Net Weight -->
                     <mat-form-field>
                         <mat-label>Net Weight</mat-label>
@@ -58,21 +66,14 @@
                             (input)="preventNegative('netWt')">
                     </mat-form-field>
 
-                    <!-- Moisture -->
+                    <!-- Moisture(label name changed to Shortage) -->
                     <mat-form-field>
-                        <mat-label>Moisture</mat-label>
+                        <mat-label>Shortage</mat-label>
                         <input matInput type="number" formControlName="moisture" min="0" step="0.01"
                             (focus)="onFocus('moisture', $event)" (blur)="onBlur('moisture')"
                             (input)="preventNegative('moisture')">
                     </mat-form-field>
 
-
-                    <!-- Bags -->
-                    <mat-form-field>
-                        <mat-label>Bags</mat-label>
-                        <input matInput formControlName="bags" (focus)="onFocus('bags', $event)" (blur)="onBlur('bags')"
-                            (input)="preventNegative('bags')">
-                    </mat-form-field>
 
                     <!-- Total Weight -->
                     <mat-form-field>
@@ -115,9 +116,9 @@
                             (input)="preventNegative('unloading')">
                     </mat-form-field>
 
-                    <!-- Weighment -->
+                    <!-- Weighment nothing but commission-->
                     <mat-form-field>
-                        <mat-label>Weighment</mat-label>
+                        <mat-label>Commission</mat-label>
                         <input matInput type="number" formControlName="weighment" min="0" step="0.01"
                             (focus)="onFocus('weighment', $event)" (blur)="onBlur('weighment')"
                             (input)="preventNegative('weighment')">
@@ -135,12 +136,30 @@
                         <input matInput formControlName="totalAmount" readonly>
                     </mat-form-field>
 
+                    <!-- Bank Account Holder Name -->
+                    <mat-form-field>
+                        <mat-label>Bank Account Holder Name</mat-label>
+                        <input matInput formControlName="bankAccountHolderName">
+                    </mat-form-field>
+
+                    <!-- Bank Account Number -->
+                    <mat-form-field>
+                        <mat-label>Bank Account Number</mat-label>
+                        <input matInput formControlName="bankAccountNumber">
+                    </mat-form-field>
+
+                    <!-- Bank IFSC Code -->
+                    <mat-form-field>
+                        <mat-label>Bank IFSC Code</mat-label>
+                        <input matInput formControlName="bankIFSCCode">
+                    </mat-form-field>
+
                 </div>
                 <div class="example-button-row">
-                    <button mat-raised-button color="primary" (click)="addPO()" class="btn-pos">
+                    <!-- <button mat-raised-button color="primary" (click)="addPO()" class="btn-pos">
                         Add PO
                     </button>
-                    &nbsp;
+                    &nbsp; -->
                     <button mat-raised-button color="primary" (click)="receiptPreview()" class="btn-pos">
                         Preview Receipt
                     </button>
@@ -149,19 +168,17 @@
             </form>
 
 
-
-            <!-- RECEIPT -->
             <div class="receipt-container" id="receipt-container" *ngIf="showReceipt">
 
                 <div class=" header">
                     <p>Purchase Voucher</p>
                     <div style="text-align: right;">GSTIN/UIN: 36ANPPR5458P3ZS</div>
-                    <h2>Sri Gayathri Agro Tech</h2>
-                    <p>22-34/3, Sy No 108/APAGIDIMARI ROAD UTKOOR,
-                        NARAYANPET-(DIST),Telangana,509311
+                    <h2 style="font-weight: bold;font-size: 40px;">Sri Gayathri Agro Tech</h2>
+                    <p>22-34/3, Sy No 108/A Pagidimari Road<br />
+                        Utkoor,Narayanpet,Telangana 509311<br />
                         Ph No.9491489760
                     </p>
-
+                    <hr />
                 </div>
 
                 <div class="info-grid">
@@ -171,6 +188,7 @@
                     <div><b>Aadhar No:</b> {{receipt.aadharNo}}</div>
                     <div><b>Date:</b> {{receipt.date | date:'dd/MM/yyyy'}}</div>
                     <div><b>Vehicle No:</b> {{receipt.vehicleNo}}</div>
+
                 </div>
 
                 <hr>
@@ -179,9 +197,9 @@
                     <thead>
                         <tr>
                             <th>Paddy</th>
-                            <th>Net Wt</th>
-                            <th>Moisture</th>
                             <th>Bags</th>
+                            <th>Net Wt</th>
+                            <th>Shortage</th>
                             <th>Total Wt</th>
                             <th>Rate</th>
                             <th>Amount</th>
@@ -190,9 +208,9 @@
                     <tbody>
                         <tr>
                             <td>{{receipt.paddy}}</td>
+                            <td>{{receipt.bags}}</td>
                             <td>{{receipt.netWt}}</td>
                             <td>{{receipt.moisture}}</td>
-                            <td>{{receipt.bags}}</td>
                             <td>{{receipt.totalWt}}</td>
                             <td>{{receipt.rate}}</td>
                             <td>{{receipt.amount| currency:'INR':'symbol'}}</td>
@@ -200,16 +218,14 @@
                     </tbody>
                 </table>
 
-                <hr>
+                <!-- <hr> -->
 
                 <div class="deductions">
-                    <h4>Deductions</h4>
-
                     <table class="details-table">
                         <thead>
                             <tr>
                                 <th>Unloading</th>
-                                <th>Weighment</th>
+                                <th>Commission</th>
                                 <th>Total Deductions</th>
                             </tr>
                         </thead>
@@ -221,21 +237,37 @@
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
 
-                <div class="total-section">
-                    <div><strong>Total Amount:</strong> {{receipt.totalAmount| currency:'INR':'symbol'}}</div>
-                    <div><strong>Advance:</strong> {{receipt.advance| currency:'INR':'symbol'}}</div>
-                    <div class="final"><strong>Balance Paid:</strong> {{receipt.balance| currency:'INR':'symbol'}}</div>
+                <div class="summary-container">
+
+                    <!-- LEFT SIDE -->
+                    <div class="bank-section">
+                        <div><b>Account Holder:</b> {{receipt.bankAccountHolderName}}</div>
+                        <div><b>Account Number:</b> {{receipt.bankAccountNumber}}</div>
+                        <div><b>IFSC Code:</b> {{receipt.bankIFSCCode}}</div>
+                        <div><b>Due Date:</b> {{receipt.dueDate | date:'dd/MM/yyyy'}}</div>
+                    </div>
+
+                    <!-- RIGHT SIDE -->
+                    <div class="total-section">
+                        <div><strong>Total Amount:</strong> {{receipt.totalAmount | currency:'INR':'symbol'}}</div>
+                        <div><strong>Advance:</strong> {{receipt.advance | currency:'INR':'symbol'}}</div>
+                        <div class="final">
+                            <strong>Balance Paid:</strong> {{receipt.balance | currency:'INR':'symbol'}}
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="footer">
                     <p>Signature of Supplier</p>
                     <p>Thank You</p>
                 </div>
-
             </div>
+
+
+
             <button (click)="downloadPDF()" class="btn-pos cus-gap" mat-raised-button color="accent"
                 *ngIf="showReceipt">
                 Download PDF

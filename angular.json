@@ -38,7 +38,11 @@
             "allowedCommonJsDependencies": [
               "rxjs/add/operator/filter",
               "jquery",
-              "chartist"
+              "chartist",
+              "canvg",
+              "html2canvas",
+              "raf",
+              "rgbcolor"
             ]
           },
           "configurations": {

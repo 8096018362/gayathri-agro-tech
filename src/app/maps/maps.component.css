@@ -33,6 +33,7 @@
 
 .header {
     text-align: center;
+    margin-bottom: 0px !important
 }
 
 .header h2 {
@@ -45,43 +46,6 @@
     grid-template-columns: repeat(2, 1fr);
     margin-top: 15px;
     gap: 10px;
-}
-
-.details-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-.details-table th,
-.details-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-}
-
-.details-table th {
-    background: #f5f5f5;
-}
-
-.deductions {
-    margin-top: 15px;
-}
-
-.total-section {
-    margin-top: 20px;
-    text-align: right;
-}
-
-.total-section .final {
-    font-size: 18px;
-    color: green;
-}
-
-.footer {
-    margin-top: 40px;
-    display: flex;
-    justify-content: space-between;
 }
 
 
@@ -101,9 +65,131 @@ strong {
     font-weight: bold !important;
 }
 
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.section {
+    padding: 15px;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.receipt {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #000;
+    background: #fff;
+}
+
+.receipt-container {
+    width: 800px;
+    margin: auto;
+    padding: 20px;
+    /* border: 1px solid #ccc; */
+    background: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.details-table th,
+.details-table td {
+    border: 1px solid #ddd;
+    padding: 2px;
+    text-align: center;
+}
+
+.details-table th {
+    background: #f5f5f5;
+}
+
+.deductions {
+    margin-top: 5px;
+}
+
+
+.footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.btn-pos {
+    width: 50%;
+    margin: auto;
+}
+
+.cus-gap {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+b,
+strong {
+    font-weight: bold !important;
+}
+
+.mat-dialog-content {
+    max-height: auto !important;
+}
+
+
+.summary-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.bank-section {
+    text-align: left;
+}
+
+.total-section {
+    text-align: right;
+}
+
+.total-section .final {
+    font-size: 18px;
+    color: green;
+}
+
+hr {
+    margin-bottom: 2px !important;
+    margin-top: 2px !important;
+}
+
 /* PRINT STYLE */
 @media print {
     .receipt-container {
         border: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .summary-container {
+        flex-direction: column;
+    }
+
+    .total-section {
+        text-align: left;
+        margin-top: 15px;
     }
 }

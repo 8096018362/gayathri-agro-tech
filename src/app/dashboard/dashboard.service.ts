@@ -25,7 +25,10 @@ export class DashboardService {
             "totalWt": 115,
             "unloading": 20,
             "vehicleNo": "AP22Z1249",
-            "weighment": 30
+            "weighment": 30,
+            "bankAccountHolderName": "Raghu Kumar",
+            "bankAccountNumber": "123456789016",
+            "bankIFSCCode": "SBIN0001016"
         },
         {
             "aadharNo": "3017 4017 5017",
@@ -47,7 +50,10 @@ export class DashboardService {
             "totalWt": 116,
             "unloading": 25,
             "vehicleNo": "AP22Z1250",
-            "weighment": 25
+            "weighment": 25,
+            "bankAccountHolderName": "Harish Reddy",
+            "bankAccountNumber": "123456789017",
+            "bankIFSCCode": "SBIN0001017"
         },
         {
             "aadharNo": "3018 4018 5018",
@@ -69,9 +75,11 @@ export class DashboardService {
             "totalWt": 117,
             "unloading": 30,
             "vehicleNo": "AP22Z1251",
-            "weighment": 20
+            "weighment": 20,
+            "bankAccountHolderName": "Lokesh Naidu",
+            "bankAccountNumber": "123456789018",
+            "bankIFSCCode": "SBIN0001018"
         },
-
         {
             "aadharNo": "3019 4019 5019",
             "advance": 990,
@@ -92,9 +100,11 @@ export class DashboardService {
             "totalWt": 118,
             "unloading": 20,
             "vehicleNo": "AP22Z1252",
-            "weighment": 30
+            "weighment": 30,
+            "bankAccountHolderName": "Teja Varma",
+            "bankAccountNumber": "123456789019",
+            "bankIFSCCode": "SBIN0001019"
         },
-
         {
             "aadharNo": "3020 4020 5020",
             "advance": 1000,
@@ -115,9 +125,11 @@ export class DashboardService {
             "totalWt": 119,
             "unloading": 25,
             "vehicleNo": "AP22Z1253",
-            "weighment": 25
+            "weighment": 25,
+            "bankAccountHolderName": "Manoj Kumar",
+            "bankAccountNumber": "123456789020",
+            "bankIFSCCode": "SBIN0001020"
         },
-
         {
             "aadharNo": "3021 4021 5021",
             "advance": 1010,
@@ -138,9 +150,11 @@ export class DashboardService {
             "totalWt": 120,
             "unloading": 30,
             "vehicleNo": "AP22Z1254",
-            "weighment": 20
+            "weighment": 20,
+            "bankAccountHolderName": "Sathish Babu",
+            "bankAccountNumber": "123456789021",
+            "bankIFSCCode": "SBIN0001021"
         },
-
         {
             "aadharNo": "3022 4022 5022",
             "advance": 1020,
@@ -161,9 +175,11 @@ export class DashboardService {
             "totalWt": 121,
             "unloading": 20,
             "vehicleNo": "AP22Z1255",
-            "weighment": 30
+            "weighment": 30,
+            "bankAccountHolderName": "Naveen Reddy",
+            "bankAccountNumber": "123456789022",
+            "bankIFSCCode": "SBIN0001022"
         },
-
         {
             "aadharNo": "3023 4023 5023",
             "advance": 1030,
@@ -184,9 +200,11 @@ export class DashboardService {
             "totalWt": 122,
             "unloading": 25,
             "vehicleNo": "AP22Z1256",
-            "weighment": 25
+            "weighment": 25,
+            "bankAccountHolderName": "Pavan Kumar",
+            "bankAccountNumber": "123456789023",
+            "bankIFSCCode": "SBIN0001023"
         },
-
         {
             "aadharNo": "3024 4024 5024",
             "advance": 1040,
@@ -207,9 +225,11 @@ export class DashboardService {
             "totalWt": 123,
             "unloading": 30,
             "vehicleNo": "AP22Z1257",
-            "weighment": 20
+            "weighment": 20,
+            "bankAccountHolderName": "Charan Teja",
+            "bankAccountNumber": "123456789024",
+            "bankIFSCCode": "SBIN0001024"
         },
-
         {
             "aadharNo": "3025 4025 5025",
             "advance": 1050,
@@ -230,9 +250,11 @@ export class DashboardService {
             "totalWt": 124,
             "unloading": 20,
             "vehicleNo": "AP22Z1258",
-            "weighment": 30
+            "weighment": 30,
+            "bankAccountHolderName": "Arjun Rao",
+            "bankAccountNumber": "123456789025",
+            "bankIFSCCode": "SBIN0001025"
         }
-
     ]
 
     // ✅ BehaviorSubject (State)

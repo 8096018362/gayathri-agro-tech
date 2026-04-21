@@ -8,12 +8,12 @@
                 <div class=" header">
                     <p>Purchase Voucher</p>
                     <div style="text-align: right;">GSTIN/UIN: 36ANPPR5458P3ZS</div>
-                    <h2>Sri Gayathri Agro Tech</h2>
-                    <p>22-34/3, Sy No 108/APAGIDIMARI ROAD UTKOOR,
-                        NARAYANPET(DIST),Telangana 509311<br />
+                    <h2 style="font-weight: bold;font-size: 40px;">Sri Gayathri Agro Tech</h2>
+                    <p>22-34/3, Sy No 108/A Pagidimari Road<br />
+                        Utkoor,Narayanpet,Telangana 509311<br />
                         Ph No.9491489760
                     </p>
-
+                    <hr />
                 </div>
 
                 <div class="info-grid">
@@ -23,6 +23,7 @@
                     <div><b>Aadhar No:</b> {{receipt.aadharNo}}</div>
                     <div><b>Date:</b> {{receipt.date | date:'dd/MM/yyyy'}}</div>
                     <div><b>Vehicle No:</b> {{receipt.vehicleNo}}</div>
+
                 </div>
 
                 <hr>
@@ -73,14 +74,31 @@
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
 
-                <div class="total-section">
-                    <div><strong>Total Amount:</strong> {{receipt.totalAmount| currency:'INR':'symbol'}}</div>
-                    <div><strong>Advance:</strong> {{receipt.advance| currency:'INR':'symbol'}}</div>
-                    <div class="final"><strong>Balance Paid:</strong> {{receipt.balance| currency:'INR':'symbol'}}
+                <div class="summary-container">
+
+                    <!-- LEFT SIDE -->
+                    <div class="bank-section">
+                        <!-- <div><strong>Bank Name:</strong> SBI</div>
+                        <div><strong>Account No:</strong> 1234567890</div>
+                        <div><strong>IFSC:</strong> SBIN0001234</div> -->
+
+
+                        <div><b>Account Holder:</b> {{receipt.bankAccountHolderName}}</div>
+                        <div><b>Account Number:</b> {{receipt.bankAccountNumber}}</div>
+                        <div><b>IFSC Code:</b> {{receipt.bankIFSCCode}}</div>
                     </div>
+
+                    <!-- RIGHT SIDE -->
+                    <div class="total-section">
+                        <div><strong>Total Amount:</strong> {{receipt.totalAmount | currency:'INR':'symbol'}}</div>
+                        <div><strong>Advance:</strong> {{receipt.advance | currency:'INR':'symbol'}}</div>
+                        <div class="final">
+                            <strong>Balance Paid:</strong> {{receipt.balance | currency:'INR':'symbol'}}
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="footer">

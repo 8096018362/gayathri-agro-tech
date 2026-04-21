@@ -40,9 +40,8 @@
 
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 15px;
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
 }
 
 .details-table {
@@ -65,22 +64,12 @@
     margin-top: 5px;
 }
 
-.total-section {
-    margin-top: 20px;
-    text-align: right;
-}
-
-.total-section .final {
-    font-size: 18px;
-    color: green;
-}
 
 .footer {
     margin-top: 40px;
     display: flex;
     justify-content: space-between;
 }
-
 
 
 .btn-pos {
@@ -102,9 +91,43 @@ strong {
     max-height: auto !important;
 }
 
+
+.summary-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.bank-section {
+    text-align: left;
+}
+
+.total-section {
+    text-align: right;
+}
+
+.total-section .final {
+    font-size: 18px;
+    color: green;
+}
+
+
+
 /* PRINT STYLE */
 @media print {
     .receipt-container {
         border: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .summary-container {
+        flex-direction: column;
+    }
+
+    .total-section {
+        text-align: left;
+        margin-top: 15px;
     }
 }
